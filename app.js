@@ -11,6 +11,7 @@ async function getCountry(url){
      borders: data.borders
    };
 }
+//
 
 
 // This function does exactly what the function above does except that this one 
@@ -31,6 +32,24 @@ async function getCountriesByBorder(borders){
     
   });
 }
+//added new getCountryByBorder function
+
+const borders = ["MNE", "GRC", "MKD"];
+
+const getCountryByBorders = async borders => {
+  const codes = borders.join(";");
+  const url = `https://restcountries.eu/rest/v2/alpha?codes=${codes}`;
+  let res = await fetch(url);
+
+  const data = await res.json();
+  console.log(data)
+
+  return data;
+};
+
+getCountryByBorders(borders)
+
+//addition closed
 
 // this  function does exactly what is above but only returns the name value in the returned object
 
